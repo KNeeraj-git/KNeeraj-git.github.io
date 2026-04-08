@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neeraj YT Downloader</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Neeraj YT Downloader is a free, fast, and portable tool to download YouTube videos, audio (MP3), multi-language tracks, subtitles, and thumbnails up to 8K resolution.">
+    <meta name="keywords" content="Neeraj yt downloader, YouTube downloader, free youtube video downloader, download youtube playlist, youtube to mp3, Neeraj FX, 8k video downloader, Best YouTube video downloader, youtube thumbnail downloader, download youtube subtitles, multi audio youtube downloader, portable youtube downloader, fast youtube downloader mp4">
+    <meta name="author" content="Neeraj Bairwa">
     
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
@@ -19,7 +22,6 @@
         }
 
         body {
-            /* Premium Radial Gradient Dark Background */
             background: #0f172a; 
             background: radial-gradient(circle at center top, #1e293b 0%, #020617 100%);
             color: #f8fafc;
@@ -29,7 +31,6 @@
             align-items: center;
         }
 
-        /* Glassmorphism */
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(16px);
@@ -39,7 +40,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        /* Navbar */
         header {
             width: 100%;
             padding: 15px 50px;
@@ -89,7 +89,6 @@
             color: #60a5fa;
         }
 
-        /* Main Container */
         .main-container {
             margin-top: 100px;
             width: 90%;
@@ -100,7 +99,6 @@
             padding-bottom: 50px;
         }
 
-        /* Hero Section */
         .hero {
             padding: 40px;
             display: flex;
@@ -180,7 +178,6 @@
             font-weight: 500;
         }
 
-        /* Slider Section */
         .slider-container {
             padding: 30px 20px;
             position: relative;
@@ -283,7 +280,6 @@
         .prev-btn { left: 15px; }
         .next-btn { right: 15px; }
 
-        /* About & Features Section */
         .about-section {
             padding: 40px;
         }
@@ -318,7 +314,6 @@
             font-size: 18px;
         }
 
-        /* Footer */
         footer {
             width: 100%;
             padding: 30px 20px;
@@ -380,7 +375,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
-                <li><a href="support.html">Support</a>
+                <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
     </header>
@@ -476,11 +471,9 @@
                     const bytes = data.assets[0].size;
                     sizeMB = (bytes / (1024 * 1024)).toFixed(1) + " MB";
                     
-                    // Button ke download link ko latest file se replace karna
                     document.getElementById('mainDownloadBtn').href = data.assets[0].browser_download_url;
                 }
 
-                // Text ko website par dikhana
                 document.getElementById('versionInfo').innerHTML = `◀ Version ${version} • ${sizeMB} • Updated: ${formattedDate} ▶`;
 
             } catch (error) {
@@ -489,7 +482,6 @@
             }
         }
 
-        // Page load hote hi Auto-update run karna
         fetchLatestGitHubRelease();
 
 
@@ -522,13 +514,8 @@
 
         showSlide(0);
 
-        function nextSlide() {
-            showSlide(currentIndex + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentIndex - 1);
-        }
+        function nextSlide() { showSlide(currentIndex + 1); }
+        function prevSlide() { showSlide(currentIndex - 1); }
     </script>
 
 </body>
