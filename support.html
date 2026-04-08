@@ -26,14 +26,20 @@
             border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
+        /* Clickable Logo Styling */
+        .logo-link { text-decoration: none; color: inherit; }
+
         header {
             width: 100%; padding: 15px 50px; display: flex; justify-content: space-between;
             align-items: center; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: fixed; top: 0; z-index: 100;
         }
-        .logo-container { display: flex; align-items: center; gap: 15px; }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; cursor: pointer; }
         .logo-container img { width: 40px; height: 40px; border-radius: 8px; }
-        .logo-container h1 { font-size: 22px; font-weight: 600; color: #f8fafc; }
+        .logo-container h1 { font-size: 22px; font-weight: 600; color: #f8fafc; transition: color 0.3s;}
+        .logo-container:hover h1 { color: #60a5fa; }
+
         nav ul { list-style: none; display: flex; gap: 30px; }
         nav ul li a { text-decoration: none; color: #cbd5e1; font-weight: 500; transition: color 0.3s; }
         nav ul li a:hover, nav ul li a.active { color: #60a5fa; }
@@ -54,8 +60,6 @@
         .faq-box p { font-size: 15px; color: #cbd5e1; line-height: 1.6; padding-left: 28px; }
 
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .action-grid { grid-template-columns: 1fr; } }
-        
         .action-box { padding: 30px; text-align: center; border-radius: 15px; }
         .action-box h3 { font-size: 22px; margin-bottom: 15px; color: #f8fafc; }
         .action-box p { font-size: 15px; color: #cbd5e1; margin-bottom: 25px; }
@@ -92,15 +96,31 @@
         }
         .social-icons a:hover { background: #2563eb; transform: translateY(-3px); }
         .copyright { margin-top: 15px; font-size: 13px; color: #64748b; }
+
+        /* =========================================
+           MOBILE RESPONSIVENESS FIXES
+           ========================================= */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; 
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .main-container { margin-top: 140px; width: 95%; }
+            .action-grid { grid-template-columns: 1fr; }
+            .support-header h2 { font-size: 26px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="images/logo.png" alt="Logo">
-            <h1>NeerajYT Downloader</h1>
-        </div>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo">
+                <h1>NeerajYT Downloader</h1>
+            </div>
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>

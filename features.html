@@ -13,258 +13,110 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body {
             background: #0f172a; 
             background: radial-gradient(circle at center top, #1e293b 0%, #020617 100%);
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
+
+        /* Clickable Logo Styling */
+        .logo-link { text-decoration: none; color: inherit; }
 
         header {
-            width: 100%;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: fixed;
-            top: 0;
-            z-index: 100;
+            width: 100%; padding: 15px 50px; display: flex; justify-content: space-between;
+            align-items: center; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: fixed; top: 0; z-index: 100;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .logo-container { display: flex; align-items: center; gap: 15px; cursor: pointer; }
+        .logo-container img { width: 40px; height: 40px; border-radius: 8px; }
+        .logo-container h1 { font-size: 22px; font-weight: 600; color: #f8fafc; transition: color 0.3s; }
+        .logo-container:hover h1 { color: #60a5fa; }
 
-        .logo-container img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-        }
-
-        .logo-container h1 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #f8fafc;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #cbd5e1;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: #60a5fa;
-        }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { text-decoration: none; color: #cbd5e1; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: #60a5fa; }
 
         .main-container {
-            margin-top: 100px;
-            width: 95%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            padding-bottom: 50px;
+            margin-top: 100px; width: 95%; max-width: 1200px; display: flex;
+            flex-direction: column; gap: 30px; padding-bottom: 50px;
         }
 
-        .features-header {
-            padding: 40px;
-            text-align: center;
-        }
-
+        .features-header { padding: 40px; text-align: center; }
         .page-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 36px; font-weight: 700; margin-bottom: 15px;
             background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .intro-text { font-size: 18px; color: #94a3b8; max-width: 900px; margin: 0 auto; line-height: 1.6; }
 
-        .intro-text {
-            font-size: 18px;
-            color: #94a3b8;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            padding: 0 20px;
-        }
-
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 20px; }
         .feature-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, background 0.3s;
-            display: flex;
-            flex-direction: column;
+            background: rgba(0, 0, 0, 0.2); border-radius: 15px; padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s, background 0.3s;
+            display: flex; flex-direction: column;
         }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(96, 165, 250, 0.3);
-        }
-
+        .feature-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); border-color: rgba(96, 165, 250, 0.3); }
         .feature-card h3 {
-            font-size: 20px;
-            color: #f8fafc;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 20px; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
+            padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .feature-card ul { list-style: none; flex-grow: 1; }
+        .feature-card ul li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; color: #cbd5e1; font-size: 15px; line-height: 1.5; }
+        .feature-card ul li i { color: #22c55e; margin-top: 4px; font-size: 14px; }
 
-        .feature-card ul {
-            list-style: none;
-            flex-grow: 1;
-        }
-
-        .feature-card ul li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            color: #cbd5e1;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        .feature-card ul li i {
-            color: #22c55e;
-            margin-top: 4px;
-            font-size: 14px;
-        }
-
-        .highlight-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.1));
-            border-color: rgba(59, 130, 246, 0.3);
-            text-align: center;
-        }
-
-        .highlight-card h3 {
-            justify-content: center;
-            border-bottom: none;
-            color: #60a5fa;
-            font-size: 24px;
-        }
-
-        .highlight-card p {
-            color: #cbd5e1;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .highlight-card ul {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .highlight-card ul li {
-            background: rgba(0,0,0,0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            margin-bottom: 0;
-        }
+        .highlight-card { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.1)); border-color: rgba(59, 130, 246, 0.3); text-align: center; }
+        .highlight-card h3 { justify-content: center; border-bottom: none; color: #60a5fa; font-size: 24px; }
+        .highlight-card p { color: #cbd5e1; font-size: 16px; margin-bottom: 20px; }
+        .highlight-card ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .highlight-card ul li { background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 50px; margin-bottom: 0; }
 
         footer {
-            width: 100%;
-            padding: 30px 20px;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            margin-top: auto;
+            width: 100%; padding: 30px 20px; background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center; margin-top: auto;
         }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .social-icons { display: flex; gap: 15px; margin-top: 10px; }
         .social-icons a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            display: flex; justify-content: center; align-items: center; width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease;
         }
+        .social-icons a:hover { background: #2563eb; transform: translateY(-3px); }
+        .copyright { margin-top: 15px; font-size: 13px; color: #64748b; }
 
-        .social-icons a:hover {
-            background: #2563eb;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            margin-top: 15px;
-            font-size: 13px;
-            color: #64748b;
+        /* =========================================
+           MOBILE RESPONSIVENESS FIXES
+           ========================================= */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; 
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .main-container { margin-top: 140px; width: 95%; }
+            .page-title { font-size: 28px; }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="images/logo.png" alt="Logo">
-            <h1>NeerajYT Downloader</h1>
-        </div>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo">
+                <h1>NeerajYT Downloader</h1>
+            </div>
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -275,14 +127,12 @@
     </header>
 
     <div class="main-container">
-        
         <section class="glass features-header">
             <h1 class="page-title">🚀 Complete Feature Overview</h1>
             <p class="intro-text">Neeraj YT Downloader is a powerful, easy-to-use, and portable tool designed to give you complete control over downloading YouTube content. Whether you want high-quality videos, audio files, subtitles, or thumbnails, everything is available in one place with a clean and simple interface.</p>
         </section>
 
         <div class="features-grid">
-            
             <div class="glass feature-card">
                 <h3>🎬 Video Downloading</h3>
                 <ul>
@@ -401,7 +251,6 @@
                     <li><i class="fa-solid fa-star"></i> Simple & Powerful</li>
                 </ul>
             </div>
-
         </div>
     </div>
 
