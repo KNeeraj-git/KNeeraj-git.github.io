@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Neeraj YT Downloader</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* Basic Reset & Theme */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            background: #0f172a; 
+            background: radial-gradient(circle at center top, #1e293b 0%, #020617 100%);
+            color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navbar */
+        header {
+            width: 100%; padding: 15px 50px; display: flex; justify-content: space-between;
+            align-items: center; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: fixed; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container img { width: 40px; height: 40px; border-radius: 8px; }
+        .logo-container h1 { font-size: 22px; font-weight: 600; color: #f8fafc; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { text-decoration: none; color: #cbd5e1; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: #60a5fa; }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 100px; width: 90%; max-width: 900px; display: flex;
+            flex-direction: column; gap: 30px; padding-bottom: 50px;
+        }
+
+        /* Support Header */
+        .support-header { padding: 40px; text-align: center; }
+        .support-header h2 { font-size: 32px; font-weight: 600; margin-bottom: 10px; color: #60a5fa; }
+        .support-header p { font-size: 16px; color: #94a3b8; }
+
+        /* FAQ Section */
+        .faq-section { display: flex; flex-direction: column; gap: 20px; }
+        .faq-box { padding: 25px; border-radius: 15px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); }
+        .faq-box h4 { font-size: 18px; color: #f8fafc; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .faq-box h4 i { color: #60a5fa; margin-top: 4px; }
+        .faq-box p { font-size: 15px; color: #cbd5e1; line-height: 1.6; padding-left: 28px; }
+
+        /* Contact & Action Boxes */
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .action-grid { grid-template-columns: 1fr; } }
+        
+        .action-box { padding: 30px; text-align: center; border-radius: 15px; }
+        .action-box h3 { font-size: 22px; margin-bottom: 15px; color: #f8fafc; }
+        .action-box p { font-size: 15px; color: #cbd5e1; margin-bottom: 25px; }
+        
+        .btn-github {
+            display: inline-flex; align-items: center; gap: 10px; background: #24292e; color: white;
+            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;
+        }
+        .btn-github:hover { background: #2ea043; transform: translateY(-2px); }
+
+        .contact-links { display: flex; justify-content: center; gap: 15px; }
+        .contact-links a {
+            width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 20px; text-decoration: none; color: white;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;
+        }
+        .contact-links a:hover { transform: translateY(-3px); }
+        .ig-hover:hover { background: #e1306c; }
+        .yt-hover:hover { background: #ff0000; }
+        .tw-hover:hover { background: #1da1f2; }
+
+        /* Footer */
+        footer {
+            width: 100%; padding: 30px 20px; background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center; margin-top: auto;
+        }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .social-icons { display: flex; gap: 15px; margin-top: 10px; }
+        .social-icons a {
+            display: flex; justify-content: center; align-items: center; width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%; color: white; text-decoration: none; font-size: 18px; transition: all 0.3s ease;
+        }
+        .social-icons a:hover { background: #2563eb; transform: translateY(-3px); }
+        .copyright { margin-top: 15px; font-size: 13px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo">
+            <h1>NeerajYT Downloader</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <section class="glass support-header">
+            <h2>Help & Support</h2>
+            <p>Need assistance? Check the FAQs below or reach out directly.</p>
+        </section>
+
+        <section class="faq-section">
+            <div class="glass faq-box">
+                <h4><i class="fa-solid fa-circle-question"></i> Windows Defender/SmartScreen is blocking the app. Why?</h4>
+                <p>Since this is a new indie software without an expensive digital certificate, Windows may flag it as an "Unknown Publisher". The software is 100% safe. Simply click on <strong>"More info"</strong> and then <strong>"Run anyway"</strong> to start the application.</p>
+            </div>
+
+            <div class="glass faq-box">
+                <h4><i class="fa-solid fa-circle-question"></i> Where do my downloaded files get saved?</h4>
+                <p>By default, your videos and audio files are saved in your computer's <strong>Downloads</strong> folder.You can change the destination folder anytime from the <strong>New Download</strong> tab in the app.</p>
+            </div>
+
+            <div class="glass faq-box">
+                <h4><i class="fa-solid fa-circle-question"></i> Is this software truly free?</h4>
+                <p>Yes! Neeraj YT Downloader is completely free to use. There are no hidden subscription fees, no locked features, and no annoying advertisements.</p>
+            </div>
+
+            <div class="glass faq-box">
+                <h4><i class="fa-solid fa-circle-question"></i> My download stopped midway. Do I have to start over?</h4>
+                <p>Not at all. The software supports a full Resume feature. If your internet disconnects, simply use the resume button and it will continue downloading exactly from where it stopped.</p>
+            </div>
+        </section>
+
+        <div class="action-grid">
+            <section class="glass action-box">
+                <h3>Report a Bug / Issue</h3>
+                <p>Found a glitch or have a feature request? Let me know on GitHub.</p>
+                <a href="https://github.com/KNeeraj-git/YT-Downloader-Config/issues" target="_blank" class="btn-github">
+                    <i class="fa-brands fa-github"></i> Open GitHub Issue
+                </a>
+            </section>
+
+            <section class="glass action-box">
+                <h3>Direct Contact</h3>
+                <p>Still need help? Drop me a direct message on my social handles.</p>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/kneeraj.ig/" target="_blank" class="ig-hover"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/kneeraj_x" target="_blank" class="tw-hover"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@NeerajFX_yt" target="_blank" class="yt-hover"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@NeerajFX_yt" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/kneeraj.ig/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/kneeraj_x" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="copyright">
+                Neeraj Bairwa | © 2026 NEERAJ FX. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

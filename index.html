@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neeraj YT Downloader</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Premium Radial Gradient Dark Background */
+            background: #0f172a; 
+            background: radial-gradient(circle at center top, #1e293b 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navbar */
+        header {
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .logo-container h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 100px;
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px; 
+        }
+
+        .hero-logo-panel {
+            width: 140px; 
+            height: 140px;
+            background: #111;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0; 
+        }
+
+        .hero-logo-panel img {
+            width: 120px; 
+            height: 120px;
+            object-fit: contain; 
+        }
+
+        .hero-text-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;  
+        }
+
+        .hero-text-panel h2 {
+            font-size: 32px; 
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-text-panel p {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px; 
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.5);
+        }
+
+        .version-info {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        /* Slider Section */
+        .slider-container {
+            padding: 30px 20px;
+            position: relative;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            transition: all 0.5s ease-in-out;
+            cursor: pointer;
+            width: 70%; 
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; 
+            border-radius: 12px; 
+            transition: filter 0.5s ease, opacity 0.5s ease;
+        }
+
+        .slide.active-center {
+            transform: translateX(0%) scale(1);
+            z-index: 3;
+            opacity: 1;
+        }
+
+        .slide.active-center img {
+            filter: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide.prev-side {
+            transform: translateX(-55%) scale(0.8);
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        .slide.prev-side img {
+            filter: blur(6px);
+        }
+
+        .slide.next-side {
+            transform: translateX(55%) scale(0.8);
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        .slide.next-side img {
+            filter: blur(6px);
+        }
+
+        .slide.hidden {
+            transform: translateX(0%) scale(0.5);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        /* About & Features Section */
+        .about-section {
+            padding: 40px;
+        }
+
+        .about-section h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #f8fafc;
+        }
+
+        .about-section p {
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .features-list li i {
+            color: #22c55e;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 30px 20px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo">
+            <h1>NeerajYT Downloader</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="support.html">Support</a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <section class="glass hero">
+            <div class="hero-container">
+                <div class="hero-logo-panel">
+                    <img src="images/logo.png" alt="Logo">
+                </div>
+                <div class="hero-text-panel">
+                    <h2>Download Neeraj YT Downloader</h2>
+                    <p>Download Videos & Thumbnails with Ease</p>
+                    
+                    <a href="https://github.com/KNeeraj-git/YT-Downloader-Config/releases/download/v1.0/Neeraj.YT.Downloader.exe" id="mainDownloadBtn" class="download-btn">
+                        <i class="fa-brands fa-windows"></i> Download for Windows (.exe)
+                    </a>
+                    
+                    <div class="version-info" id="versionInfo">
+                        ◀ Loading version info... ▶
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass slider-container">
+            <button class="slider-btn prev-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="slider-wrapper" id="sliderWrapper">
+                <div class="slide"><img src="images/img1.png" alt="Screenshot 1"></div>
+                <div class="slide"><img src="images/img2.png" alt="Screenshot 2"></div>
+                <div class="slide"><img src="images/img3.png" alt="Screenshot 3"></div>
+                <div class="slide"><img src="images/img4.png" alt="Screenshot 4"></div>
+                <div class="slide"><img src="images/img5.png" alt="Screenshot 5"></div>
+                <div class="slide"><img src="images/img6.png" alt="Screenshot 6"></div>
+            </div>
+        </section>
+
+        <section class="glass about-section" id="about-features">
+            <h3>About</h3>
+            <p><strong>Neeraj YT Downloader</strong> is a powerful and easy-to-use tool for downloading YouTube videos and thumbnails. It requires no installation, runs directly after download, and offers fast, high-quality downloads. Whether you want to save your favorite videos for offline viewing or quickly grab video thumbnails, this portable application has you covered.</p>
+            
+            <h3>Features</h3>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-check"></i> <span><strong>Multi-Audio Download</strong> – Download videos with all available audio languages in a single file. Experience true multi-language support like never before. 🔥</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Smart Subtitle System</strong> – Automatically detect, embed, or download subtitles with one click. No extra setup needed. 💀</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Custom Playlist Download</strong> – Choose exactly which videos you want from a playlist. Full control in your hands.</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Ultra Fast 8K Downloader</strong> – Enjoy lightning-fast downloads with support up to 8K 60fps resolution.</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Built-in Thumbnail Downloader</strong> – Instantly grab the highest quality video thumbnails with ease.</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Pause, Resume & Queue System</strong> – Manage your downloads like a pro with full control anytime.</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>Portable Software</strong> – No installation required. Just download and run instantly.</span></li>
+                <li><i class="fa-solid fa-check"></i> <span><strong>High Quality MP3 Extraction</strong> – Convert videos to crystal-clear audio up to 320kbps.</span></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@NeerajFX_yt" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/kneeraj.ig/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/kneeraj_x" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+
+            <div class="copyright">
+                Neeraj Bairwa | © 2026 NEERAJ FX. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. GitHub API se Auto-Update karne ka code
+        async function fetchLatestGitHubRelease() {
+            try {
+                // GitHub Repository ka API link
+                const response = await fetch('https://api.github.com/repos/KNeeraj-git/YT-Downloader-Config/releases/latest');
+                const data = await response.json();
+
+                // Version tag uthana (jaise v1.0)
+                const version = data.tag_name || "v1.0";
+
+                // Date ko sundar format mein badalna
+                const dateObj = new Date(data.published_at);
+                const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                // File size (MB mein) calculate karna
+                let sizeMB = "Unknown Size";
+                if (data.assets && data.assets.length > 0) {
+                    const bytes = data.assets[0].size;
+                    sizeMB = (bytes / (1024 * 1024)).toFixed(1) + " MB";
+                    
+                    // Button ke download link ko latest file se replace karna
+                    document.getElementById('mainDownloadBtn').href = data.assets[0].browser_download_url;
+                }
+
+                // Text ko website par dikhana
+                document.getElementById('versionInfo').innerHTML = `◀ Version ${version} • ${sizeMB} • Updated: ${formattedDate} ▶`;
+
+            } catch (error) {
+                console.log("Auto-update fail ho gaya, purana backup dikha rahe hain.", error);
+                document.getElementById('versionInfo').innerHTML = `◀ Version 1.0 • 5.2 MB • Updated: April 8, 2026 ▶`;
+            }
+        }
+
+        // Page load hote hi Auto-update run karna
+        fetchLatestGitHubRelease();
+
+
+        // 2. Image Slider ka code
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+
+            slides.forEach(slide => {
+                slide.className = 'slide hidden'; 
+            });
+
+            slides[currentIndex].className = 'slide active-center';
+
+            let prevIndex = (currentIndex === 0) ? totalSlides - 1 : currentIndex - 1;
+            let nextIndex = (currentIndex === totalSlides - 1) ? 0 : currentIndex + 1;
+
+            slides[prevIndex].className = 'slide prev-side';
+            slides[nextIndex].className = 'slide next-side';
+        }
+
+        showSlide(0);
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
+
+</body>
+</html>

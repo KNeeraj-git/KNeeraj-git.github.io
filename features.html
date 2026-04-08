@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Neeraj YT Downloader</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a; 
+            background: radial-gradient(circle at center top, #1e293b 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        header {
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .logo-container h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #60a5fa;
+        }
+
+        /* Features Page Specific Styles */
+        .main-container {
+            margin-top: 100px;
+            width: 95%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        .features-header {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: #f8fafc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .feature-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .feature-card ul li i {
+            color: #22c55e;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .highlight-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.1));
+            border-color: rgba(59, 130, 246, 0.3);
+            text-align: center;
+        }
+
+        .highlight-card h3 {
+            justify-content: center;
+            border-bottom: none;
+            color: #60a5fa;
+            font-size: 24px;
+        }
+
+        .highlight-card p {
+            color: #cbd5e1;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-card ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .highlight-card ul li {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            width: 100%;
+            padding: 30px 20px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo">
+            <h1>NeerajYT Downloader</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <section class="glass features-header">
+            <h1 class="page-title">🚀 Complete Feature Overview</h1>
+            <p class="intro-text">Neeraj YT Downloader is a powerful, easy-to-use, and portable tool designed to give you complete control over downloading YouTube content. Whether you want high-quality videos, audio files, subtitles, or thumbnails, everything is available in one place with a clean and simple interface.</p>
+        </section>
+
+        <div class="features-grid">
+            
+            <div class="glass feature-card">
+                <h3>🎬 Video Downloading</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Download YouTube videos in multiple formats such as MP4, MKV, and WEBM</li>
+                    <li><i class="fa-solid fa-check"></i> Supports all resolutions from low quality (144p) to ultra-high quality (4K)</li>
+                    <li><i class="fa-solid fa-check"></i> Automatically selects the best available video and audio combination</li>
+                    <li><i class="fa-solid fa-check"></i> Smooth and fast downloading without lag</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>🎵 Audio Extraction</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Convert any video into high-quality MP3 audio</li>
+                    <li><i class="fa-solid fa-check"></i> Supports multiple bitrate options (128kbps to 320kbps)</li>
+                    <li><i class="fa-solid fa-check"></i> Perfect for music, podcasts, and offline listening</li>
+                    <li><i class="fa-solid fa-check"></i> Clean audio with embedded metadata</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card" style="border-color: rgba(234, 179, 8, 0.4);">
+                <h3 style="color: #facc15;">🎙️ Multi-Audio Support</h3>
+                <ul>
+                    <li><i class="fa-solid fa-star" style="color: #facc15;"></i> Download videos with multiple audio languages in a single file</li>
+                    <li><i class="fa-solid fa-star" style="color: #facc15;"></i> Automatically detects all available audio tracks</li>
+                    <li><i class="fa-solid fa-star" style="color: #facc15;"></i> Ideal for multilingual content and learning purposes</li>
+                    <li><i class="fa-solid fa-star" style="color: #facc15;"></i> Rare feature not commonly available in most tools</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>🧠 Smart Subtitle System</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Automatically detects available subtitles for any video</li>
+                    <li><i class="fa-solid fa-check"></i> Supports both original and auto-generated subtitles</li>
+                    <li><i class="fa-solid fa-check"></i> Option to embed subtitles directly into the video</li>
+                    <li><i class="fa-solid fa-check"></i> Option to download subtitles as separate files (.srt)</li>
+                    <li><i class="fa-solid fa-check"></i> No manual searching or syncing required</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>📥 Playlist Downloading</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Download full playlists with one click</li>
+                    <li><i class="fa-solid fa-check"></i> Option to select only specific videos from a playlist</li>
+                    <li><i class="fa-solid fa-check"></i> Automatically skips private or unavailable videos</li>
+                    <li><i class="fa-solid fa-check"></i> Saves time when downloading multiple videos</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>⚡ Speed & Performance</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> High-speed download engine optimized for performance</li>
+                    <li><i class="fa-solid fa-check"></i> Shows real-time download speed, file size, and remaining time</li>
+                    <li><i class="fa-solid fa-check"></i> Stable downloads even for large files</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>📂 Download Manager</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Add multiple downloads to queue</li>
+                    <li><i class="fa-solid fa-check"></i> Pause, resume, or cancel downloads anytime</li>
+                    <li><i class="fa-solid fa-check"></i> Continue downloads without starting over</li>
+                    <li><i class="fa-solid fa-check"></i> Organized and controlled downloading experience</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>📸 Thumbnail Downloader</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> View video thumbnail before downloading</li>
+                    <li><i class="fa-solid fa-check"></i> Download highest quality thumbnail instantly</li>
+                    <li><i class="fa-solid fa-check"></i> Useful for designers, editors, and content creators</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>🕓 History & Control</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Automatically saves your previous downloads</li>
+                    <li><i class="fa-solid fa-check"></i> Restart any previous download with one click</li>
+                    <li><i class="fa-solid fa-check"></i> Keeps track of completed and failed downloads</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>⚙️ Smart & Easy to Use</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Clean and modern dark user interface</li>
+                    <li><i class="fa-solid fa-check"></i> One-click operations for most features</li>
+                    <li><i class="fa-solid fa-check"></i> No technical knowledge required</li>
+                    <li><i class="fa-solid fa-check"></i> Designed for both beginners and advanced users</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card">
+                <h3>💻 Portable & Lightweight</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> No installation required</li>
+                    <li><i class="fa-solid fa-check"></i> Run directly after download</li>
+                    <li><i class="fa-solid fa-check"></i> Does not affect system performance</li>
+                    <li><i class="fa-solid fa-check"></i> Easy to carry and use anywhere</li>
+                </ul>
+            </div>
+
+            <div class="glass feature-card highlight-card">
+                <h3>💎 Why Choose This Software?</h3>
+                <p>This tool is built to give users maximum control, speed, and flexibility while keeping everything simple and efficient.</p>
+                <ul>
+                    <li><i class="fa-solid fa-star"></i> All-in-one solution</li>
+                    <li><i class="fa-solid fa-star"></i> Unique multi-audio support</li>
+                    <li><i class="fa-solid fa-star"></i> Fast & Lightweight</li>
+                    <li><i class="fa-solid fa-star"></i> Simple & Powerful</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@NeerajFX_yt" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/kneeraj.ig/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/kneeraj_x" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="copyright">
+                Neeraj Bairwa | © 2026 NEERAJ FX. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
